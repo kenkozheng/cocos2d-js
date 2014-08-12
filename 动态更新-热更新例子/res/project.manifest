@@ -1,0 +1,16 @@
+{
+    "packageUrl" : "http://192.168.1.11:8000/res",
+    "remoteManifestUrl" : "http://192.168.1.11:8000/res/project.manifest",
+    "remoteVersionUrl" : "http://192.168.1.11:8000/res/version.manifest",
+    "version" : "1.0.6",
+    "engineVersion" : "3.0 rc0",
+	"assets" : {
+        "src/app.zip" : {
+            "md5" : "D07D260D8072F786A586A6A430D0E98B",
+			"compressed" : true
+        }
+    },
+
+    "searchPaths" : [
+    ]
+}
