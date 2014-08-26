@@ -1,0 +1,14 @@
+{
+	"packageUrl" : "http://kenkozheng.github.io/cocos/res/",
+	"remoteManifestUrl" : "http://kenkozheng.github.io/cocos/res/project.manifest",
+	"remoteVersionUrl" : "http://kenkozheng.github.io/cocos/res/version.manifest",
+	"version" : "1.0.0",
+	"engineVersion" : "3.0 rc2",
+
+	"assets" : {
+	},
+    
+    "searchPaths" : [
+        "/"
+    ]
+}
