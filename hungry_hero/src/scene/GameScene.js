@@ -89,7 +89,8 @@ var GameScene = cc.Scene.extend({
     },
 
     _back:function() {
-        cc.director.runScene(new MenuScene());
+		if (keyCode == cc.KEY.back)
+			cc.director.runScene(new MenuScene());
     },
 
     _handleHeroPose:function() {
