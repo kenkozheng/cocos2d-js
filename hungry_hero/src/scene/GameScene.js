@@ -14,6 +14,7 @@ var GameScene = cc.Scene.extend({
     _windEffect:null,
 
     _foodManager:null,
+    _obstacleManager:null,
 
     _touchY:0,
     _cameraShake:0,
@@ -88,7 +89,7 @@ var GameScene = cc.Scene.extend({
             this._touchY = event.getLocationY();
     },
 
-    _back:function() {
+    _back:function(keyCode, event) {
 		if (keyCode == cc.KEY.back)
 			cc.director.runScene(new MenuScene());
     },
