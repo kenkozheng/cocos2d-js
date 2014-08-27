@@ -89,6 +89,7 @@ var Obstacle = cc.Sprite.extend({
         this.stopAllActions();
         this.setRotation(0);
         this.hideLookout();
+        this.retain();          //jsb必须加这句
     },
 
     crash:function() {

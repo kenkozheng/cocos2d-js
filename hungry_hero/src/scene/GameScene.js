@@ -39,7 +39,7 @@ var GameScene = cc.Scene.extend({
         this._ui.update();
 
         if("touches" in cc.sys.capabilities)
-            cc.eventManager.addListener({event: cc.EventListener.TOUCH_ALL_AT_ONCE, onTouchMoved: this._onTouchMoved.bind(this)}, this);
+            cc.eventManager.addListener({event: cc.EventListener.TOUCH_ALL_AT_ONCE, onTouchesMoved: this._onTouchMoved.bind(this)}, this);
         else
             cc.eventManager.addListener({event: cc.EventListener.MOUSE, onMouseMove: this._onMouseMove.bind(this)}, this);
         cc.eventManager.addListener({event: cc.EventListener.KEYBOARD, onKeyReleased: this._back}, this);
@@ -81,7 +81,7 @@ var GameScene = cc.Scene.extend({
 
     _onTouchMoved:function(touches, event) {
         if(Game.gameState != GameConstants.GAME_STATE_OVER)
-            this._touchY = touches[0].y;
+            this._touchY = touches[0].getLocation().y;
     },
 
     _onMouseMove:function(event) {

@@ -31,13 +31,17 @@ var MenuScene = cc.Scene.extend({
         var move = cc.moveTo(2, cc.p(this._hero.width/2 + 100, this._hero.y)).easing(cc.easeOut(2));
         this._hero.runAction(move);
 
-        this._playBtn = new cc.MenuItemImage("#welcome_playButton.png", null, this._play);
+        this._playBtn = new cc.MenuItemImage("#welcome_playButton.png", "#welcome_playButton.png", this._play);
         this._playBtn.x = 700;
         this._playBtn.y = 350;
-        this._aboutBtn = new cc.MenuItemImage("#welcome_aboutButton.png", null, this._about);
+        this._aboutBtn = new cc.MenuItemImage("#welcome_aboutButton.png", "#welcome_aboutButton.png", this._about, this);
         this._aboutBtn.x = 500;
         this._aboutBtn.y = 250;
-        var soundButton = new SoundButton();
+
+        if(cc.sys.isNative)
+            var soundButton = new cc.MenuItemToggle(new cc.MenuItemImage("#soundOn0002.png"), new cc.MenuItemImage("#soundOff.png"), Sound.toggleOnOff);
+        else
+            var soundButton = new SoundButton();
         soundButton.x = 45;
         soundButton.y = winSize.height - 45;
         var menu = new cc.Menu(this._playBtn, this._aboutBtn, soundButton);  //默认都居中叠在一起

@@ -19,6 +19,7 @@ var Hero = cc.Sprite.extend({
         var action = cc.animate(this._animation).repeatForever();
         this.runAction(action);
         this._fast = false;
+        this._animation.retain();
 
         return true;
     },
@@ -28,13 +29,18 @@ var Hero = cc.Sprite.extend({
             return;
         this._fast = fast;
 
+        this.stopAllActions();
         if(!fast)
             this._animation.setDelayPerUnit(1/20);
         else
             this._animation.setDelayPerUnit(1/60);
-        this.stopAllActions();
         var action = cc.animate(this._animation).repeatForever();
         this.runAction(action);
+    },
+
+    onExit: function () {
+        this._super();
+        this._animation.release();
     }
 
 });

@@ -27,8 +27,8 @@ var ObstacleManager = cc.Class.extend({
             for (var i = this._obstaclesToAnimate.length - 1; i >= 0; i--) {
                 var item = this._obstaclesToAnimate[i];
                 this._obstaclesToAnimate.splice(i, 1);
-                this._container.removeChild(item);
                 cc.pool.putInPool(item);
+                this._container.removeChild(item);
             }
         }
     },
@@ -106,8 +106,8 @@ var ObstacleManager = cc.Class.extend({
             // If the obstacle passes beyond the screen, remove it.
             if (obstacle.x < -obstacle.width || Game.gameState == GameConstants.GAME_STATE_OVER) {
                 this._obstaclesToAnimate.splice(i, 1);
-                this._container.removeChild(obstacle);
                 cc.pool.putInPool(obstacle);
+                this._container.removeChild(obstacle);
                 continue;
             }
 

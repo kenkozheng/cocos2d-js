@@ -44,8 +44,11 @@ var GameSceneUI = cc.Layer.extend({
         this._scoreText.x = 915;
         this._scoreText.y = winSize.height - 60;
 
-        var pauseButton = new cc.MenuItemImage("#pauseButton.png", null, this._pauseResume);
-        var soundButton = new SoundButton();
+        var pauseButton = new cc.MenuItemImage("#pauseButton.png", "#pauseButton.png", this._pauseResume);
+        if(cc.sys.isNative)
+            var soundButton = new cc.MenuItemToggle(new cc.MenuItemImage("#soundOn0002.png"), new cc.MenuItemImage("#soundOff.png"), Sound.toggleOnOff);
+        else
+            var soundButton = new SoundButton();
         var menu = new cc.Menu(soundButton, pauseButton);
         menu.alignItemsHorizontallyWithPadding(30);
         menu.x = 80;

@@ -145,7 +145,3 @@ cc.game.onStart = function(){
 	scene.run();
 };
 cc.game.run();
-
-var jslog = function() {
-    cc.log(Array.prototype.join.call(arguments, ", "));
-};

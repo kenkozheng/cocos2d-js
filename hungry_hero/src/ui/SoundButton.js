@@ -1,5 +1,6 @@
 /**
  * Created by kenkozheng on 2014/8/22.
+ * 只用于html5
  */
 
 var SoundButton = cc.MenuItemToggle.extend({

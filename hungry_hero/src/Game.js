@@ -25,3 +25,8 @@ var Game = {
         cc.director.runScene(new MenuScene());
     }
 };
+
+
+var jslog = function() {
+    cc.log(Array.prototype.join.call(arguments, ", "));
+};

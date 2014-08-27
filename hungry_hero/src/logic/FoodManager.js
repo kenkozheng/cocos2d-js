@@ -64,8 +64,8 @@ var FoodManager = cc.Class.extend({
             for (var i = this._itemsToAnimate.length - 1; i >= 0; i--) {
                 var item = this._itemsToAnimate[i];
                 this._itemsToAnimate.splice(i, 1);
-                this._container.removeChild(item);
                 cc.pool.putInPool(item);
+                this._container.removeChild(item);
             }
         }
     },
@@ -157,7 +157,7 @@ var FoodManager = cc.Class.extend({
 
                     // Mark the item for animation.
                     this._itemsToAnimate.push(item);
-                    this._container.addChild(item);
+                    this._container.addChild(item, 1);
                     break;
 
                 case 2:
@@ -179,7 +179,7 @@ var FoodManager = cc.Class.extend({
                         item.x = winSize.width + item.width;
                         item.y = this._patternPosYstart;
                         this._itemsToAnimate.push(item);
-                        this._container.addChild(item);
+                        this._container.addChild(item, 1);
 
                         // Increase the position of the next item based on patternStep.
                         this._patternPosYstart += this._patternStep;
@@ -204,7 +204,7 @@ var FoodManager = cc.Class.extend({
                         item.x = winSize.width + item.width;
                         item.y = this._patternPosY;
                         this._itemsToAnimate.push(item);
-                        this._container.addChild(item);
+                        this._container.addChild(item, 1);
                         this._patternPosY += this._patternStep * this._patternDirection;
                     }
                     else {
@@ -222,7 +222,7 @@ var FoodManager = cc.Class.extend({
                         item.x = winSize.width + item.width;
                         item.y = this._patternPosY;
                         this._itemsToAnimate.push(item);
-                        this._container.addChild(item);
+                        this._container.addChild(item, 1);
                     }
                     break;
 
@@ -235,7 +235,7 @@ var FoodManager = cc.Class.extend({
                     item.x = winSize.width + item.width;
                     item.y = this._patternPosY;
                     this._itemsToAnimate.push(item);
-                    this._container.addChild(item);
+                    this._container.addChild(item, 2);
                     break;
 
                 case 11:
@@ -247,7 +247,7 @@ var FoodManager = cc.Class.extend({
                     item.x = winSize.width + item.width;
                     item.y = this._patternPosY;
                     this._itemsToAnimate.push(item);
-                    this._container.addChild(item);
+                    this._container.addChild(item, 3);
                     break;
             }
         }
@@ -278,8 +278,8 @@ var FoodManager = cc.Class.extend({
 
                 if (item.x < -80 || Game.gameState == GameConstants.GAME_STATE_OVER) {
                     this._itemsToAnimate.splice(i, 1);
+                    cc.pool.putInPool(item);        //必须先放进池（自己在Item中写了retain操作，再removeChild
                     this._container.removeChild(item);
-                    cc.pool.putInPool(item);
                     continue;
                 }
                 else {
@@ -318,8 +318,8 @@ var FoodManager = cc.Class.extend({
 
                         // Dispose the food item.
                         this._itemsToAnimate.splice(i, 1);
-                        this._container.removeChild(item);
                         cc.pool.putInPool(item);
+                        this._container.removeChild(item);
                     }
                 }
             }

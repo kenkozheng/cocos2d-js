@@ -29,7 +29,7 @@ var AboutScene = cc.Scene.extend({
 //        helloLabel.textAlign = cc.TEXT_ALIGNMENT_CENTER;
         layer.addChild(helloLabel);
 
-        var backButton = new cc.MenuItemImage("#about_backButton.png", null, this._back);
+        var backButton = new cc.MenuItemImage("#about_backButton.png", "#about_backButton.png", this._back);
         backButton.x = 150;
         backButton.y = -70;
         var menu = new cc.Menu(backButton);

@@ -22,7 +22,7 @@ var Item = cc.Sprite.extend({
     },
 
     unuse:function() {
-
+        this.retain();          //jsb必须加这句
     }
 
 });
