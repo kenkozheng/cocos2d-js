@@ -34,9 +34,9 @@ var GameOverUI = cc.Layer.extend({
         this._scoreText.y = winSize.height - 270;
 
 
-        var replayBtn = new cc.MenuItemImage("#gameOver_playAgainButton.png", null, this._replay.bind(this));
-        var aboutBtn = new cc.MenuItemImage("#gameOver_aboutButton.png", null, this._about);
-        var mainBtn = new cc.MenuItemImage("#gameOver_mainButton.png", null, this._return);
+        var replayBtn = new cc.MenuItemImage("#gameOver_playAgainButton.png", "#gameOver_playAgainButton.png", this._replay.bind(this));
+        var aboutBtn = new cc.MenuItemImage("#gameOver_aboutButton.png", "#gameOver_aboutButton.png", this._about);
+        var mainBtn = new cc.MenuItemImage("#gameOver_mainButton.png", "#gameOver_mainButton.png", this._return);
         var menu = new cc.Menu(replayBtn, mainBtn, aboutBtn);
         menu.alignItemsVertically();
         this.addChild(menu);
