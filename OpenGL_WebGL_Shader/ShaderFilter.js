@@ -3,8 +3,8 @@
 */
 
 /**
-* Ö»ÄÜÓÃÓÚ¿ØÖÆSpriteµÄÉ«µ÷µÈ£¬Ä¿±êÊÇÊµÏÖÀàËÆFlashµÄÄÚÖÃ»ù±¾ÂË¾µ
-* ¾²Ì¬Àà
+* åªèƒ½ç”¨äºæ§åˆ¶Spriteçš„è‰²è°ƒç­‰ï¼Œç›®æ ‡æ˜¯å®ç°ç±»ä¼¼Flashçš„å†…ç½®åŸºæœ¬æ»¤é•œ
+* é™æ€ç±»
 */
 var Filter = {
 
@@ -45,7 +45,7 @@ var Filter = {
     programs:{},
 
     /**
-     * »Ò¶È
+     * ç°åº¦
      * @param sprite
      */
     grayScale: function (sprite) {
@@ -53,7 +53,7 @@ var Filter = {
         if(!program){
             program = new cc.GLProgram();
             program.initWithString(Filter.DEFAULT_VERTEX_SHADER, Filter.GRAY_SCALE_FRAGMENT_SHADER);
-            program.addAttribute(cc.ATTRIBUTE_NAME_POSITION, cc.VERTEX_ATTRIB_POSITION);        //cocos»á×ö³õÊ¼»¯µÄ¹¤×÷
+            program.addAttribute(cc.ATTRIBUTE_NAME_POSITION, cc.VERTEX_ATTRIB_POSITION);        //cocosä¼šåšåˆå§‹åŒ–çš„å·¥ä½œ
             program.addAttribute(cc.ATTRIBUTE_NAME_TEX_COORD, cc.VERTEX_ATTRIB_TEX_COORDS);
             program.link();
             program.updateUniforms();
@@ -64,16 +64,16 @@ var Filter = {
     },
 
     /**
-     * Ôì¾É
+     * é€ æ—§
      * @param sprite
-     * @param degree ¾ÉµÄ³Ì¶È 0~1
+     * @param degree æ—§çš„ç¨‹åº¦ 0~1
      */
     sepia: function (sprite, degree) {
         var program = Filter.programs["sepia"+degree];
         if(!program){
             program = new cc.GLProgram();
             program.initWithString(Filter.DEFAULT_VERTEX_SHADER, Filter.SEPIA_FRAGMENT_SHADER);
-            program.addAttribute(cc.ATTRIBUTE_NAME_POSITION, cc.VERTEX_ATTRIB_POSITION);        //cocos»á×ö³õÊ¼»¯µÄ¹¤×÷
+            program.addAttribute(cc.ATTRIBUTE_NAME_POSITION, cc.VERTEX_ATTRIB_POSITION);        //cocosä¼šåšåˆå§‹åŒ–çš„å·¥ä½œ
             program.addAttribute(cc.ATTRIBUTE_NAME_TEX_COORD, cc.VERTEX_ATTRIB_TEX_COORDS);
             program.link();
             program.updateUniforms();

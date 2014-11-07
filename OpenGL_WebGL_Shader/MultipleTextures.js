@@ -1,4 +1,4 @@
-var MultiTexturesLayer = cc.Layer.extend({
+ï»¿var MultiTexturesLayer = cc.Layer.extend({
 
     ctor:function() {
         this._super();
@@ -51,26 +51,26 @@ var MultiTexturesLayer = cc.Layer.extend({
             this.shader.addAttribute(cc.ATTRIBUTE_NAME_POSITION, cc.VERTEX_ATTRIB_POSITION);
             this.shader.addAttribute(cc.ATTRIBUTE_NAME_TEX_COORD, cc.VERTEX_ATTRIB_TEX_COORDS);
             this.shader.link();
-            this.shader.updateUniforms();   //°ó¶¨Î»ÖÃ£¬Õâ¸öÊÇcocos·â×°ºó±ØĞë×öµÄÊÂ¡£ÏêÏ¸¿ÉÒÔ¿´´úÂë
+            this.shader.updateUniforms();   //ç»‘å®šä½ç½®ï¼Œè¿™ä¸ªæ˜¯cocoså°è£…åå¿…é¡»åšçš„äº‹ã€‚è¯¦ç»†å¯ä»¥çœ‹ä»£ç 
             this.initGL();
 
             var p = this.shader.getProgram();
-            this.tex1Location = gl.getUniformLocation(p, "tex0");    //Èç¹ûfrag shader×îÖÕÃ»ÓĞÓÃÄ³¸öuniform£¬¸Ãuniform»á±»ÓÅ»¯É¾µô
+            this.tex1Location = gl.getUniformLocation(p, "tex0");    //å¦‚æœfrag shaderæœ€ç»ˆæ²¡æœ‰ç”¨æŸä¸ªuniformï¼Œè¯¥uniformä¼šè¢«ä¼˜åŒ–åˆ æ‰
             this.tex2Location = gl.getUniformLocation(p, "tex1");
             trace(this.tex1Location, this.tex2Location);
 
             glnode.draw = function() {
-                this.shader.use();                      //Ê¹ÓÃÕâ¸öshaderÀ´»æÖÆ£¬·â×°ÁËglµÄuse¡£¸úÖ¸¶¨glnode.shaderProgramÀàËÆ
-                this.shader.setUniformsForBuiltins();   //ÉèÖÃ×ø±êÏµ±ä»»
+                this.shader.use();                      //ä½¿ç”¨è¿™ä¸ªshaderæ¥ç»˜åˆ¶ï¼Œå°è£…äº†glçš„useã€‚è·ŸæŒ‡å®šglnode.shaderProgramç±»ä¼¼
+                this.shader.setUniformsForBuiltins();   //è®¾ç½®åæ ‡ç³»å˜æ¢
 
-                gl.activeTexture(gl.TEXTURE0);          //webglÖĞÒ»¹²32¸ö£¬¿ÉÒÔ¿´cocos2dÁĞµÄ³£Á¿
+                gl.activeTexture(gl.TEXTURE0);          //webglä¸­ä¸€å…±32ä¸ªï¼Œå¯ä»¥çœ‹cocos2dåˆ—çš„å¸¸é‡
                 gl.bindTexture(gl.TEXTURE_2D, this.tex1.getName());
-                gl.uniform1i(this.tex1Location, 0);     //°ÑCC_Texture0Ö¸Ïògl.TEXTURE0
+                gl.uniform1i(this.tex1Location, 0);     //æŠŠCC_Texture0æŒ‡å‘gl.TEXTURE0
                 gl.activeTexture(gl.TEXTURE1);
                 gl.bindTexture(gl.TEXTURE_2D, this.tex2.getName());
-                gl.uniform1i(this.tex1Location, 1);
+                gl.uniform1i(this.tex2Location, 1);
 
-                cc.glEnableVertexAttribs( cc.VERTEX_ATTRIB_FLAG_TEX_COORDS | cc.VERTEX_ATTRIB_FLAG_POSITION);   //Êµ¼Ê¶ÔglµÄapi×öÁË·â×°£¬Ôö¼ÓÁËÕâÁ½¸öÊôĞÔµÄÎ»ÖÃÓ³Éä¡£ÓÃÓÚvertexAttribPointer
+                cc.glEnableVertexAttribs( cc.VERTEX_ATTRIB_FLAG_TEX_COORDS | cc.VERTEX_ATTRIB_FLAG_POSITION);   //å®é™…å¯¹glçš„apiåšäº†å°è£…ï¼Œå¢åŠ äº†è¿™ä¸¤ä¸ªå±æ€§çš„ä½ç½®æ˜ å°„ã€‚ç”¨äºvertexAttribPointer
 
                 // Draw fullscreen Square
                 gl.bindBuffer(gl.ARRAY_BUFFER, this.squareVertexPositionBuffer);
@@ -84,7 +84,7 @@ var MultiTexturesLayer = cc.Layer.extend({
                 gl.activeTexture(gl.TEXTURE0);
                 gl.bindTexture(gl.TEXTURE_2D, null);
                 gl.activeTexture(gl.TEXTURE1);
-                gl.bindTexture(gl.TEXTURE_2D, null);        //Ê¹ÓÃÍê±ØĞëÖÃÎª¿Õ£¬·ñÔòÓ°ÏìÆäËûnode
+                gl.bindTexture(gl.TEXTURE_2D, null);        //ä½¿ç”¨å®Œå¿…é¡»ç½®ä¸ºç©ºï¼Œå¦åˆ™å½±å“å…¶ä»–node
                 gl.bindBuffer(gl.ARRAY_BUFFER, null);
 
             }.bind(this);
