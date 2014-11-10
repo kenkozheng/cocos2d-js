@@ -1,3 +1,5 @@
-MultipleTextures£º¶àÎÆÀíÌùÍ¼
-ShaderFilter£ºÈçºÎ¸øspriteÔö¼ÓÂË¾µ£¬ÊµÏÖ¸öĞÔ»¯Ğ§¹û
-Shader_native_jsb_compatible£ºÈçºÎ°ÑÉÏÊöÁ½¸ö³ÌĞò¼æÈİµÄÔËĞĞµ½ÊÖ»úÉÏ
+MultipleTexturesï¼šå¤šçº¹ç†è´´å›¾
+
+ShaderFilterï¼šå¦‚ä½•ç»™spriteå¢åŠ æ»¤é•œï¼Œå®ç°ä¸ªæ€§åŒ–æ•ˆæœ
+
+Shader_native_jsb_compatibleï¼šå¦‚ä½•æŠŠä¸Šè¿°ä¸¤ä¸ªç¨‹åºå…¼å®¹çš„è¿è¡Œåˆ°æ‰‹æœºä¸Š
