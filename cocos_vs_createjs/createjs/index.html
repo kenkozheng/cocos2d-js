@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>EaselJS: Simple Transform Example</title>
+
+    <!-- Note: All core EaselJS classes are listed here: -->
+    <script type="text/javascript" src="./createjs/events/Event.js"></script>
+    <script type="text/javascript" src="./createjs/events/EventDispatcher.js"></script>
+    <script type="text/javascript" src="./createjs/utils/IndexOf.js"></script>
+    <script type="text/javascript" src="./easeljs/utils/UID.js"></script>
+    <script type="text/javascript" src="./easeljs/utils/Ticker.js"></script>
+    <script type="text/javascript" src="./easeljs/geom/Matrix2D.js"></script>
+    <script type="text/javascript" src="./easeljs/geom/Point.js"></script>
+    <script type="text/javascript" src="./easeljs/geom/Rectangle.js"></script>
+    <script type="text/javascript" src="./easeljs/display/Shadow.js"></script>
+    <script type="text/javascript" src="./easeljs/display/SpriteSheet.js"></script>
+    <script type="text/javascript" src="./easeljs/display/Graphics.js"></script>
+    <script type="text/javascript" src="./easeljs/display/DisplayObject.js"></script>
+    <script type="text/javascript" src="./easeljs/display/Container.js"></script>
+    <script type="text/javascript" src="./easeljs/display/Stage.js"></script>
+    <script type="text/javascript" src="./easeljs/display/Bitmap.js"></script>
+    <script type="text/javascript" src="./easeljs/display/Sprite.js"></script>
+    <script type="text/javascript" src="./easeljs/display/BitmapAnimation.js"></script>
+    <script type="text/javascript" src="./easeljs/display/BitmapText.js"></script>
+    <script type="text/javascript" src="./easeljs/display/Shape.js"></script>
+    <script type="text/javascript" src="./easeljs/display/Text.js"></script>
+    <script type="text/javascript" src="./easeljs/display/DOMElement.js"></script>
+    <script type="text/javascript" src="./easeljs/events/MouseEvent.js"></script>
+    <script type="text/javascript" src="./easeljs/filters/Filter.js"></script>
+    <script type="text/javascript" src="./easeljs/ui/ButtonHelper.js"></script>
+    <script type="text/javascript" src="./easeljs/ui/Touch.js"></script>
+    <script type="text/javascript" src="./easeljs/utils/SpriteSheetUtils.js"></script>
+    <script type="text/javascript" src="./easeljs/utils/SpriteSheetBuilder.js"></script>
+    <script type="text/javascript" src="./tweenjs/Tween.js"></script>
+    <script type="text/javascript" src="./tweenjs/Ease.js"></script>
+
+    <!-- We also provide hosted minified versions of all CreateJS libraries.
+      http://code.createjs.com -->
+
+    <script type="text/javascript">
+        var stage;
+        var canvas;
+
+        function init() {
+            canvas = document.getElementById("testCanvas");
+            stage = new createjs.Stage(canvas);
+            stage.autoClear = true;
+
+            var bg  = new createjs.Bitmap("../res/bg.jpg");
+            stage.addChild(bg);
+//
+//            for (var i = 0; i < 2000; i++) {
+//                var man = new createjs.Bitmap("../res/grossini_dance_13.png");
+//                man.regX = 42;
+//                man.regY = 60;
+//                man.x = canvas.width*Math.random();
+//                man.y = canvas.height/2*Math.random();
+//                man.scaleX = man.scaleY = 1;
+//                stage.addChild(man);
+//                createjs.Tween.get(man, {loop: true}, true)
+//                        .to({rotation: Math.random()*360, scaleX:2, scaleY:2}, 1000).to({rotation: Math.random()*360, scaleX:1, scaleY:1}, 1000);
+//            }
+
+//            var images = [];
+//            for (var i = 1; i <= 14; i++) {
+//                images.push("../res/grossini_dance_" + (i<10?("0"+i):i) + ".png");
+//            }
+
+//            for (var j = 0; j < 2000; j++) {
+//                var sheet = new createjs.SpriteSheet({
+//                    images: images,
+//                    frames: {width: 85, height: 121, regX: 42, regY: 60}
+//                }); //需要设置每帧的宽高，注册点信息
+//                var man = new createjs.Sprite(sheet);
+//                man.framerate = 60/7;
+//                man.x = canvas.width*Math.random();
+//                man.y = canvas.height*Math.random();
+//                man.play();
+//                stage.addChild(man);
+//            }
+
+            stage.update();
+
+            createjs.Ticker.setFPS(60);
+            createjs.Ticker.addEventListener("tick", tick);
+        }
+
+        function add(){
+            for (var i = 0; i < 20; i++) {
+                var man = new createjs.Bitmap("../res/grossini.png");
+                man.regX = 42;
+                man.regY = 60;
+                man.x = canvas.width*Math.random();
+                man.y = canvas.height*Math.random();
+                man.scaleX = man.scaleY = 1;
+                stage.addChild(man);
+                createjs.Tween.get(man, {loop: true}, true)
+                        .to({rotation: Math.random()*360, scaleX:2, scaleY:2, x:man.x+300*Math.random()}, 1000).to({rotation: Math.random()*360, scaleX:1, scaleY:1, x:man.x}, 1000);
+            }
+        }
+
+        var count = 0;
+        var then = 0;
+        var spriteConnt = 0;
+        function tick(event) {
+            count++;
+            var now = Date.now();
+            var delta = now - then;
+            if(delta > 1000){
+                if(count >= 30){
+                    add();
+                    spriteConnt += 20;
+                    document.getElementById("count").innerHTML = spriteConnt;
+                }
+                document.getElementById("title").innerHTML = count;
+                then = now;
+                count = 0;
+            }
+            stage.update(event);
+        }
+
+    </script>
+</head>
+<body onload="init()">
+<h1 id="title"></h1>
+<h1 id="count"></h1>
+<canvas id="testCanvas" width="800" height="800"></canvas>
+
+</body>
+</html>
