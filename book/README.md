@@ -9,3 +9,5 @@
 3、97页 第二段文字 spriteNornal 应为 spriteNomal。
 
 4、100页 底下的代码和第一段文字介绍中 MenuItemImage 应为 MenuItemFont。
+
+5、75页 第三行“触摸时间”应为“触摸事件”
