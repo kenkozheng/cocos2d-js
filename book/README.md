@@ -18,4 +18,5 @@
 《Cocos2d-JS 开发之旅》第二次印刷版勘误：
 
 1、第214页，第五行，endSpin后缺少“粒”字，应该为“粒子”。
+
 2、第66页 stopAllAction 应该是 stopAllActions
